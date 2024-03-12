@@ -1,2 +1,2 @@
-# Final
-This is a simple Python implementation of the classic word-guessing game. In Hangman, players try to guess a hidden word letter by letter.
+# Hang Man Game
+This is a simple Python implementation of the classic word-guessing game. In Hangman, players try to guess a hidden word letter by letter. With each incorrect guess, a part of the hangman is drawn. The game ends when the player successfully guesses the word or runs out of guesses, resulting in the hangman being fully drawn.
