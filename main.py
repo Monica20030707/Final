@@ -1,3 +1,15 @@
+'''
+DEV 108 Final Project
+03/12/2024
+Monica Nguyen
+'''
+
+# THIS CODE SKELETON HAS BEEN IMPORTED FROM 'ch10 > hangman.py'
+
+# This code will let user do some functions they wanted to the movie lists, 
+# just added Find function and modified contents of each movies section to be able 
+# to have prices from the original code.
+
 import wordlist
 
 # Get a random word from the word list
@@ -12,7 +24,7 @@ def add_spaces(word):
 
 # Draw the display
 def draw_screen(num_wrong, num_guesses, guessed_letters, displayed_word):
-    print("-" * 79)
+    print("-" * 80)
     print("Word:", add_spaces(displayed_word),
           "  Guesses:", num_guesses,
           "  Wrong:", num_wrong,
@@ -26,11 +38,11 @@ def get_letter(guessed_letters):
         # Make sure the user enters a letter and only one letter
         if guess == "" or len(guess) > 1:
             print("Invalid entry. " +
-                  "Please enter one and only one letter.")
+                  "Please enter one and only one LETTER.")
             continue
         # Don't let the user try the same letter more than once
         elif guess in guessed_letters:
-            print("You already tried that letter.")
+            print("You already tried that LETTER.")
             continue
         else:
             return guess
@@ -49,7 +61,7 @@ def play_game():
 
     draw_screen(num_wrong, num_guesses, guessed_letters, displayed_word)
 
-    while num_wrong < 10 and remaining_letters > 0:
+    while num_wrong < 8 and remaining_letters > 0:
         guess = get_letter(guessed_letters)
         guessed_letters += guess
         
@@ -70,7 +82,7 @@ def play_game():
 
         draw_screen(num_wrong, num_guesses, guessed_letters, displayed_word)
 
-    print("-" * 79)
+    print("-" * 80)
     if remaining_letters == 0:
         print("Congratulations! You got it in", 
                num_guesses, "guesses.")   
@@ -79,7 +91,10 @@ def play_game():
         print("The word was:", word)
 
 def main():
+    print("==============================")
     print("Play the H A N G M A N game")
+    print("==============================")
+    print()
     while True:
         play_game()
         print()
