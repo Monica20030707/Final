@@ -6,16 +6,37 @@ Monica Nguyen
 
 # THIS CODE SKELETON HAS BEEN IMPORTED FROM 'ch10 > hangman.py'
 
-# This code will let user do some functions they wanted to the movie lists, 
-# just added Find function and modified contents of each movies section to be able 
-# to have prices from the original code.
+# This code will using the python word list for the hangman game.
+# The user could chose what catagories they wanted to guess the word,
+# and will have the word random for them.
 
 import wordlist
 
-# Get a random word from the word list
-def get_word():
-    word = wordlist.get_random_word()
-    return word.upper()
+# Get a random word from the user choice of catgories
+def chose_catagories():
+    print("+================================+")
+    print("|         WORD CATEGORIES        |")
+    print("|--------------------------------|")
+    print("|  Pick a theme to play:         |")
+    print("|  1. Animals                    |")
+    print("|  2. Fruits                     |")
+    print("|  3. Colors                     |")
+    print("|  4. Countries                  |")
+    print("|  5. Sports                     |")
+    print("|  6. Occupations                |")
+    print("|  7. Vehicles                   |")
+    print("|  8. Planets                    |")
+    print("|  9. Movies                     |")
+    print("|  10. Foods                     |")
+    print("+================================+")
+    print()
+    choseCatagories= input("What categories you like to guess the word from? (chose a number): ")
+    if int(choseCatagories) <= 0 and int(choseCatagories) > 10:
+        print("Wrong syntax. The input must be a number from 1 to 10. Try again")
+        choseCatagories= input("What categories you like to guess the word from? (chose a number): ")
+    else:
+        word = wordlist.get_random_word_from_category(choseCatagories)
+        return word.upper()
 
 # Add spaces between letters
 def add_spaces(word):
@@ -91,6 +112,9 @@ def play_game():
         print("The word was:", word)
 
 def main():
+    name= input("What is your name ??: ")
+    print("Hi "+ name + "!, Welcome to")
+    print()
     print("==============================")
     print("Play the H A N G M A N game")
     print("==============================")
