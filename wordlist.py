@@ -6,7 +6,7 @@ import random
 # based in their categories.
 
 animals = [
-    "aardvark", "alligator", "ant", "antelope", "ape", "armadillo", "baboon", "badger", "bat", "bear",
+    "aardvark", "alligator", "ant", "antelope", "ape", "armadillo", "bat", "bear",
     "beaver", "bee", "bison", "buffalo", "butterfly", "camel", "cat", "cheetah", "chimpanzee", "cobra",
     "cougar", "coyote", "crocodile", "deer", "dolphin", "eagle", "elephant", "falcon", "flamingo", "fox"
 ]
@@ -18,9 +18,8 @@ fruits = [
 ]
 
 colors = [
-    "amber", "amethyst", "azure", "beige", "black", "blue", "bronze", "brown", "burgundy", "caramel",
-    "cerulean", "charcoal", "chartreuse", "chocolate", "cinnamon", "cobalt", "coral", "crimson", "cyan", "emerald",
-    "fuchsia", "gold", "indigo", "ivory", "jade", "lavender", "magenta", "maroon", "olive", "orange"
+    "red", "green", "yellow", "purple", "pink", "gray", "silver","bronze", "turquoise",
+    "beige", "black", "blue", "brown", "coral", "cyan", "gold", "indigo", "ivory", "lavender", "magenta", "orange"
 ]
 
 countries = [
@@ -49,8 +48,8 @@ planets = [
 ]
 
 movies = [
-    "avatar", "titanic", "avengers", "jurassic park", "star wars", "harry potter", "frozen", "inception", "jaws", "tangled",
-    "the lion king", "forrest gump", "batman", "finding nemo", "toy story", "shrek", "gladiator", "interstellar", "the godfather", "the matrix"
+    "avatar", "titanic", "avengers", "frozen", "inception", "jaws", "tangled", "batman", "shrek", "gladiator",
+    "interstellar", "aliens", "pinocchio", "scream", "ratatouille", "casablanca", "madagascar", "up"
 ]
 
 foods = [
@@ -61,16 +60,16 @@ foods = [
 # Saving all lists into one dictonary, named categories, with numbers as key, which will point at the lists
 # as values.
 categories = {
-    "1": animals,
-    "2": fruits,
-    "3": colors,
-    "4": countries,
-    "5": sports,
-    "6": occupations,
-    "7": vehicles,
-    "8": planets,
-    "9": movies,
-    "10": foods
+    1 : animals,
+    2 : fruits,
+    3 : colors,
+    4 : countries,
+    5 : sports,
+    6 : occupations,
+    7 : vehicles,
+    8 : planets,
+    9 : movies,
+    10 : foods
 }
 
 # Get random word from the specified categories
