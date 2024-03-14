@@ -1,10 +1,7 @@
 '''
-DEV 108 Final Project
 03/12/2024
 Monica Nguyen
 '''
-
-# THIS CODE SKELETON HAS BEEN IMPORTED FROM 'ch10 > hangman.py'
 
 # This code will using the python word list for the hangman game.
 # The user could chose what catagories they wanted to guess the word,
@@ -14,6 +11,8 @@ import wordlist
 
 # Get a random word from the user choice of catgories
 def chose_catagories():
+
+    # Display the available word categories
     print("+================================+")
     print("|         WORD CATEGORIES        |")
     print("|--------------------------------|")
@@ -27,30 +26,95 @@ def chose_catagories():
     print("|  7. Vehicles                   |")
     print("|  8. Planets                    |")
     print("|  9. Movies                     |")
-    print("|  10. Foods                     |")
+    print("| 10. Foods                      |")
+    print("|--------------------------------|")
+    print("|  Other options:                |")
+    print("|  e - Exit Program              |")
     print("+================================+")
     print()
-    choseCatagories= input("What categories you like to guess the word from? (chose a number): ")
-    if int(choseCatagories) <= 0 and int(choseCatagories) > 10:
-        print("Wrong syntax. The input must be a number from 1 to 10. Try again")
-        choseCatagories= input("What categories you like to guess the word from? (chose a number): ")
-    else:
-        word = wordlist.get_random_word_from_category(choseCatagories)
-        return word.upper()
+
+    # Make sure user do the right syntax for accessing the dictionary, and option exit is available
+    while True:
+        choseCatagories = input("What category would you like to guess the word from? (choose a number between 1 and 10): ")
+        # If user chose exit, break the loop
+        if choseCatagories.lower() in ['e', 'exit']:
+            print("Exiting the game...")
+            return None
+        elif not choseCatagories.isdigit():
+            print("The input must be a number. Try again.")
+        
+        # User can only input number to match with the categories, which is only from 1 to 10
+        # for 10 categories.
+        else:
+            choseCatagories = int(choseCatagories)
+            if choseCatagories < 1 or choseCatagories > 10:
+                print("The input must be a number from 1 to 10. Try again.")
+            else:
+                # Use the number to find in the word list dictionary. The number then will used
+                # as an access key to the according Lists on wordlist.py
+                word = wordlist.get_random_word_from_category(choseCatagories)
+                return word.upper()
 
 # Add spaces between letters
 def add_spaces(word):
     word_with_spaces = " ".join(word)
     return word_with_spaces
 
-# Draw the display
+# Draw the Hang man, also displaying every other infromation belong it.
 def draw_screen(num_wrong, num_guesses, guessed_letters, displayed_word):
+    HANGMAN_PICS = ['''
+          +
+          |
+          |
+          |
+        ===''', '''
+      +---+
+          |
+          |
+          |
+        ===''','''
+      +---+
+      O   |
+          |
+          |
+        ===''', '''
+      +---+
+      O   |
+      |   |
+          |
+        ===''', '''
+      +---+
+      O   |
+     /|   |
+          |
+        ===''', '''
+      +---+
+      O   |
+     /|\  |
+          |
+        ===''', '''
+      +---+
+      O   |
+     /|\  |
+     /    |
+        ===''', '''
+      +---+
+      O   |
+     /|\  |
+     / \  |
+        ===''']
+
+    if num_wrong > 0:
+        # Since the user must be wrong at least 1 to start the picture
+        # So to match the index of pictures with the wrong, the index 
+        # must be wrong-1 with wrong start from 1
+        print(HANGMAN_PICS[num_wrong - 1])
     print("-" * 80)
     print("Word:", add_spaces(displayed_word),
           "  Guesses:", num_guesses,
           "  Wrong:", num_wrong,
           "  Tried:", add_spaces(guessed_letters))
-
+    
 # Get next letter from user
 def get_letter(guessed_letters):
     while True:
@@ -70,8 +134,14 @@ def get_letter(guessed_letters):
 
 # The input/process/draw technique is common in game programming
 def play_game():
-    word = get_word()
-    
+    word = chose_catagories()
+
+    # In case the user chose to exit from the categories, 
+    # The code will be terminated as there is nothing to guess
+    if word is None:
+            print("\nBye !!")
+            # Terminate the program
+            return
     word_length = len(word)
     remaining_letters = word_length
     displayed_word = "_" * word_length
@@ -112,19 +182,37 @@ def play_game():
         print("The word was:", word)
 
 def main():
+    # Asking for user name 
     name= input("What is your name ??: ")
-    print("Hi "+ name + "!, Welcome to")
+    print("Hi "+ name + "!, Welcome to: ")
     print()
+
+    # Display the game name
     print("==============================")
     print("Play the H A N G M A N game")
     print("==============================")
     print()
-    while True:
+
+    play_again = True
+    while play_again:
         play_game()
         print()
-        again = input("Do you want to play again (y/n)?: ").lower()
-        if again != "y":
-            break
+        
+        while True:
+            # Check syntax to make sure user only can answer yes or no.
+            again = input("Do you want to play again (y/n)?: ")
+            if again.lower() in ["y", "yes"]:
+                break
+            elif again.lower() in ["n", "no"]:
+                print("Exiting the game...")
+                play_again = False
+                break
+            else:
+                # To break the loop, must answer y,yes,n,no
+                print("Syntax error. Can only type 'y' for Yes and 'n' for No. Please try again.")
+    
+    print()
+    print("Bye !!")
 
 if __name__ == "__main__":
     main()
