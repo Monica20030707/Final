@@ -3,6 +3,8 @@
 Monica Nguyen
 '''
 
+# THIS CODE SKELETON HAS BEEN IMPORTED FROM 'ch10 > hangman.py'
+
 # This code will using the python word list for the hangman game.
 # The user could chose what catagories they wanted to guess the word,
 # and will have the word random for them.
@@ -173,13 +175,22 @@ def play_game():
 
         draw_screen(num_wrong, num_guesses, guessed_letters, displayed_word)
 
+    # Adding color code to change
+    # ANSI escape code for green color
+    green_code = '\033[92m'
+    # ANSI escape code for red color
+    red_code = '\033[91m'
+    # ANSI escape code to reset color
+    reset_code = '\033[0m'
+
     print("-" * 80)
     if remaining_letters == 0:
-        print("Congratulations! You got it in", 
-               num_guesses, "guesses.")   
+        print(green_code + "Congratulations! You got it in", 
+               num_guesses, "guesses." + reset_code)
+        
     else:    
-        print("Sorry, you lost.")
-        print("The word was:", word)
+        print(red_code + "Sorry, you lost." + reset_code)
+        print(red_code + "The word was:", word + reset_code)
 
 def main():
     # Asking for user name 
