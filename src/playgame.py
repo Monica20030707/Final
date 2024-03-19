@@ -1,10 +1,7 @@
 '''
-DEV 108 Final Project
 03/12/2024
 Monica Nguyen
 '''
-
-# THIS CODE SKELETON HAS BEEN IMPORTED FROM 'ch10 > hangman.py'
 
 # This code will using the python word list for the hangman game.
 # The user could chose what catagories they wanted to guess the word,
